@@ -3,7 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Randomize;
 import hexlet.code.cli.Cli;
 
-public class EvenGame implements IGame {
+public final class EvenGame implements IGame {
     @Override
     public void explainRules() {
         Cli.printMsg("Answer 'yes' if the number is even, otherwise answer 'no'.");

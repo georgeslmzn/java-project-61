@@ -3,7 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Randomize;
 import hexlet.code.cli.Cli;
 
-public class Prime implements IGame {
+public final class Prime implements IGame {
     private String correctAnswer;
 
     public void explainRules() {

@@ -3,7 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Randomize;
 import hexlet.code.cli.Cli;
 
-public class Calc implements IGame {
+public final class Calc implements IGame {
     private int num1;
 
     private int num2;

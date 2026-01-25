@@ -3,7 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Randomize;
 import hexlet.code.cli.Cli;
 
-public class Progression implements IGame {
+public final class Progression implements IGame {
     private final int progressionLength = 10;
 
     private final int[] progression = new int[this.progressionLength];
