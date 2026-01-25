@@ -1,10 +1,16 @@
 package hexlet.code;
 
+import hexlet.code.cli.Cli;
+import hexlet.code.games.Calc;
+import hexlet.code.games.EvenGame;
+import hexlet.code.games.Exit;
+import hexlet.code.games.Greet;
+
 public class App {
     public static String[][] games;
 
     public static void setGames() {
-        App.games = new String[3][2];
+        App.games = new String[4][2];
 
         App.games[0][0] = "0";
         App.games[0][1] = "Exit";
@@ -14,6 +20,9 @@ public class App {
 
         App.games[2][0] = "2";
         App.games[2][1] = "Even";
+
+        App.games[3][0] = "3";
+        App.games[3][1] = "Calc";
     }
 
     public static int choseGame() {
@@ -49,7 +58,12 @@ public class App {
             }
 
             if (chosenGameNumber == 2) {
-                EvenGame.run(gamerName);
+                Engine.run(gamerName, new EvenGame());
+                continue;
+            }
+
+            if (chosenGameNumber == 3) {
+                Engine.run(gamerName, new Calc());
             }
         } while (chosenGameNumber != 0);
     }
