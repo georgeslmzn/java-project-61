@@ -32,7 +32,7 @@ class Engine {
         } while (correctCount < correctCountForWin && !isLose);
 
         if (isLose) {
-            Engine.run(game);
+            Exit.run();
             return;
         }
 
@@ -61,7 +61,7 @@ class Engine {
     }
 
     public static void lose(String userAnswer, String correctAnswer) {
-        Cli.printMsg(userAnswer + " is wrong answer ;(. Correct answer was " + correctAnswer + ".");
+        Cli.printMsg("'" + userAnswer + "'"  + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'.");
         Cli.printMsg("Let's try again, " + Engine.gamerName + "!");
         Cli.printMsg("");
     }
