@@ -14,6 +14,7 @@ class Engine {
 
         int correctCountForWin = 3;
         int correctCount = 0;
+        boolean isLose = false;
         do {
             String question = game.getQuestion();
             Engine.askQuestion(question);
@@ -26,9 +27,14 @@ class Engine {
                 Engine.sayCorrect();
             } else {
                 Engine.lose(userAnswer, correctAnswer);
-                return;
+                isLose = true;
             }
-        } while (correctCount < correctCountForWin);
+        } while (correctCount < correctCountForWin && !isLose);
+
+        if (isLose) {
+            Engine.run(game);
+            return;
+        }
 
         Engine.win();
     }
@@ -39,7 +45,7 @@ class Engine {
     }
 
     public static void sayHello() {
-        Cli.printMsg("Hello," + Engine.gamerName + "!");
+        Cli.printMsg("Hello, " + Engine.gamerName + "!");
     }
 
     public static void askQuestion(String question) {
@@ -57,5 +63,6 @@ class Engine {
     public static void lose(String userAnswer, String correctAnswer) {
         Cli.printMsg(userAnswer + " is wrong answer ;(. Correct answer was " + correctAnswer + ".");
         Cli.printMsg("Let's try again, " + Engine.gamerName);
+        Cli.printMsg("");
     }
 }

@@ -38,12 +38,15 @@ public class App {
             Cli.printMsg(game[0] + " - " + game[1]);
         }
 
-        int chosenGameNumber = Cli.getInt();
-
-        Cli.printMsg("Your choice: " + chosenGameNumber);
+        int chosenGameNumber = App.getGameNumber();
         Cli.printMsg("");
 
         return chosenGameNumber;
+    }
+
+    private static int getGameNumber() {
+        Cli.printOnSameLine("Your choice: ");
+        return Cli.getInt();
     }
 
     public static void main(String[] args) {
