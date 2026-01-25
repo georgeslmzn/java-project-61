@@ -8,25 +8,25 @@ import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
 
 public class App {
-    public static String[][] games;
+    private static String[][] games;
 
-    public static final int OPTIONS_COUNT = 7;
+    private static final int OPTIONS_COUNT = 7;
 
-    public static final int OPTIONS_DESCRIPTION_LENGTH = 2;
+    private static final int OPTIONS_DESCRIPTION_LENGTH = 2;
 
-    public static final int INDEX_OF_EXIT = 0;
+    private static final int INDEX_OF_EXIT = 0;
 
-    public static final int INDEX_OF_GREET = 1;
+    private static final int INDEX_OF_GREET = 1;
 
-    public static final int INDEX_OF_EVEN = 2;
+    private static final int INDEX_OF_EVEN = 2;
 
-    public static final int INDEX_OF_CALC = 3;
+    private static final int INDEX_OF_CALC = 3;
 
-    public static final int INDEX_OF_GCD = 4;
+    private static final int INDEX_OF_GCD = 4;
 
-    public static final int INDEX_OF_PROGRESSION = 5;
+    private static final int INDEX_OF_PROGRESSION = 5;
 
-    public static final int INDEX_OF_PRIME = 6;
+    private static final int INDEX_OF_PRIME = 6;
 
     public static void setGames() {
         App.games = new String[App.OPTIONS_COUNT][App.OPTIONS_DESCRIPTION_LENGTH];

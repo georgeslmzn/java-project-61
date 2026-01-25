@@ -4,9 +4,9 @@ import hexlet.code.cli.Cli;
 import hexlet.code.games.IGame;
 
 class Engine {
-    public static String gamerName;
+    private static String gamerName;
 
-    public static final int WIN_COUNT = 3;
+    private static final int WIN_COUNT = 3;
 
     public static void run(IGame game) {
         Engine.gamerName = Greet.getName();
