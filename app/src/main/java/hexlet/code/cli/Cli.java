@@ -9,7 +9,6 @@ public class Cli {
         if (Cli.scanner == null) {
             Cli.scanner = new Scanner(System.in);
         }
-
         return Cli.scanner;
     }
 
