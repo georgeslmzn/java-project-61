@@ -10,9 +10,7 @@ public class Greet {
     }
 
     public static void run() {
-        Cli.printMsg("Welcome to the Brain Games!");
-        Cli.printMsg("May I have your name?");
-        String name = Cli.getString();
+        String name = Greet.getName();
         Cli.printMsg("Hello, " + name + "!");
     }
 }

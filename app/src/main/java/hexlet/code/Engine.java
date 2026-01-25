@@ -1,13 +1,14 @@
 package hexlet.code;
 
 import hexlet.code.cli.Cli;
+import hexlet.code.games.Greet;
 import hexlet.code.games.IGame;
 
 class Engine {
     public static String gamerName;
 
-    public static void run(String userName, IGame game) {
-        Engine.gamerName = userName;
+    public static void run(IGame game) {
+        Engine.gamerName = Greet.getName();
         Engine.sayHello();
 
         game.explainRules();
@@ -20,6 +21,7 @@ class Engine {
 
             String correctAnswer = game.getCorrectAnswer(question);
             String userAnswer = Engine.getUserAnswer();
+            Engine.printUserAnswer(userAnswer);
 
             if (userAnswer.equals(correctAnswer)) {
                 correctCount++;
@@ -31,6 +33,10 @@ class Engine {
         } while (correctCount < correctCountForWin);
 
         Engine.win();
+    }
+
+    public static void printUserAnswer(String userAnswer) {
+        Cli.printMsg("Your answer: " + userAnswer);
     }
 
     public static void sayHello() {

@@ -1,17 +1,13 @@
 package hexlet.code;
 
 import hexlet.code.cli.Cli;
-import hexlet.code.games.Calc;
-import hexlet.code.games.EvenGame;
-import hexlet.code.games.Exit;
-import hexlet.code.games.Greet;
-import hexlet.code.games.GCD;
+import hexlet.code.games.*;
 
 public class App {
     public static String[][] games;
 
     public static void setGames() {
-        App.games = new String[5][2];
+        App.games = new String[7][2];
 
         App.games[0][0] = "0";
         App.games[0][1] = "Exit";
@@ -27,6 +23,12 @@ public class App {
 
         App.games[4][0] = "4";
         App.games[4][1] = "GCD";
+
+        App.games[5][0] = "5";
+        App.games[5][1] = "Progresion";
+
+        App.games[6][0] = "6";
+        App.games[6][1] = "Prime";
     }
 
     public static int choseGame() {
@@ -45,7 +47,6 @@ public class App {
 
     public static void main(String[] args) {
         App.setGames();
-        String gamerName = Greet.getName();
 
         int chosenGameNumber = 0;
         do {
@@ -62,17 +63,27 @@ public class App {
             }
 
             if (chosenGameNumber == 2) {
-                Engine.run(gamerName, new EvenGame());
+                Engine.run(new EvenGame());
                 continue;
             }
 
             if (chosenGameNumber == 3) {
-                Engine.run(gamerName, new Calc());
+                Engine.run(new Calc());
                 continue;
             }
 
             if (chosenGameNumber == 4) {
-                Engine.run(gamerName, new GCD());
+                Engine.run(new GCD());
+                continue;
+            }
+
+            if (chosenGameNumber == 5) {
+                Engine.run(new Progression());
+                continue;
+            }
+
+            if (chosenGameNumber == 6) {
+                Engine.run(new Prime());
             }
         } while (chosenGameNumber != 0);
     }
