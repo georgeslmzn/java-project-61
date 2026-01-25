@@ -1,34 +1,55 @@
 package hexlet.code;
 
 import hexlet.code.cli.Cli;
-import hexlet.code.games.*;
+import hexlet.code.games.Calc;
+import hexlet.code.games.EvenGame;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 
 public class App {
     public static String[][] games;
 
+    public static final int OPTIONS_COUNT = 7;
+
+    public static final int OPTIONS_DESCRIPTION_LENGTH = 2;
+
+    public static final int INDEX_OF_EXIT = 0;
+
+    public static final int INDEX_OF_GREET = 1;
+
+    public static final int INDEX_OF_EVEN = 2;
+
+    public static final int INDEX_OF_CALC = 3;
+
+    public static final int INDEX_OF_GCD = 4;
+
+    public static final int INDEX_OF_PROGRESSION = 5;
+
+    public static final int INDEX_OF_PRIME = 6;
+
     public static void setGames() {
-        App.games = new String[7][2];
+        App.games = new String[App.OPTIONS_COUNT][App.OPTIONS_DESCRIPTION_LENGTH];
 
-        App.games[0][0] = "0";
-        App.games[0][1] = "Exit";
+        for (int i = 0; i < App.games.length; i++) {
+            App.games[i][0] = String.valueOf(i);
 
-        App.games[1][0] = "1";
-        App.games[1][1] = "Greet";
-
-        App.games[2][0] = "2";
-        App.games[2][1] = "Even";
-
-        App.games[3][0] = "3";
-        App.games[3][1] = "Calc";
-
-        App.games[4][0] = "4";
-        App.games[4][1] = "GCD";
-
-        App.games[5][0] = "5";
-        App.games[5][1] = "Progresion";
-
-        App.games[6][0] = "6";
-        App.games[6][1] = "Prime";
+            if (i == App.INDEX_OF_EXIT) {
+                App.games[i][1] = "Exit";
+            } else if (i == App.INDEX_OF_GREET) {
+                App.games[i][1] = "Greet";
+            } else if (i == App.INDEX_OF_EVEN) {
+                App.games[i][1] = "Even";
+            } else if (i == App.INDEX_OF_CALC) {
+                App.games[i][1] = "Calc";
+            } else if (i == App.INDEX_OF_GCD) {
+                App.games[i][1] = "GCD";
+            } else if (i == App.INDEX_OF_PROGRESSION) {
+                App.games[i][1] = "Progression";
+            } else if (i == App.INDEX_OF_PRIME) {
+                App.games[i][1] = "Prime";
+            }
+        }
     }
 
     public static int choseGame() {
@@ -54,37 +75,19 @@ public class App {
 
         int chosenGameNumber = App.choseGame();
 
-        if (chosenGameNumber == 0) {
+        if (chosenGameNumber == App.INDEX_OF_EXIT) {
             Exit.run();
-            return;
-        }
-
-        if (chosenGameNumber == 1) {
+        } else if (chosenGameNumber == App.INDEX_OF_GREET) {
             Greet.run();
-            return;
-        }
-
-        if (chosenGameNumber == 2) {
+        } else if (chosenGameNumber == App.INDEX_OF_EVEN) {
             Engine.run(new EvenGame());
-            return;
-        }
-
-        if (chosenGameNumber == 3) {
+        } else if (chosenGameNumber == App.INDEX_OF_CALC) {
             Engine.run(new Calc());
-            return;
-        }
-
-        if (chosenGameNumber == 4) {
+        } else if (chosenGameNumber == App.INDEX_OF_GCD) {
             Engine.run(new GCD());
-            return;
-        }
-
-        if (chosenGameNumber == 5) {
+        } else if (chosenGameNumber == App.INDEX_OF_PROGRESSION) {
             Engine.run(new Progression());
-            return;
-        }
-
-        if (chosenGameNumber == 6) {
+        } else if (chosenGameNumber == App.INDEX_OF_PRIME) {
             Engine.run(new Prime());
         }
     }

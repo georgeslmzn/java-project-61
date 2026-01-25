@@ -11,8 +11,8 @@ public class Prime implements IGame {
     }
 
     public String getQuestion() {
-        int min = 0;
-        int max = 1000;
+        final int min = 0;
+        final int max = 1000;
 
         int question = Randomize.getRandom(min, max);
 
@@ -30,27 +30,35 @@ public class Prime implements IGame {
     }
 
     private boolean isPrime(int n) {
+        final int one = 1;
+        final int two = 2;
+        final int three = 3;
+        final int five = 5;
+        final int six = 6;
+
         // Простые числа > 1
-        if (n <= 1) {
+        if (n <= one) {
             return false;
         }
         // 2 и 3 - простые числа
-        if (n <= 3) {
+        if (n <= three) {
             return true;
         }
         // Делимость на 2 или 3
-        if (n % 2 == 0 || n % 3 == 0) {
+        if (n % two == 0 || n % three == 0) {
             return false;
         }
 
+        boolean isPrime = true;
         // Проверка делителей до sqrt(n), перебор через 6k +/- 1
-        for (int i = 5; i * i <= n; i += 6) {
-            if (n % i == 0 || n % (i + 2) == 0) {
-                return false;
+        for (int i = five; i * i <= n; i += six) {
+            if (n % i == 0 || n % (i + two) == 0) {
+                isPrime = false;
+                break;
             }
         }
 
-        return true;
+        return isPrime;
     }
 
 }

@@ -10,8 +10,9 @@ public class EvenGame implements IGame {
     }
 
     public String getQuestion() {
-        int min = 0;
-        int max = 1000;
+        final int min = 0;
+        final int max = 1000;
+
         int question = Randomize.getRandom(min, max);
         return String.valueOf(question);
     }
@@ -20,7 +21,7 @@ public class EvenGame implements IGame {
         int intQuestion = Integer.parseInt(question);
 
         if (isEven(intQuestion)) {
-            return  "yes";
+            return "yes";
         }
 
         return "no";

@@ -4,7 +4,9 @@ import hexlet.code.Randomize;
 import hexlet.code.cli.Cli;
 
 public class Progression implements IGame {
-    private final int[] progression = new int[10];
+    private final int progressionLength = 10;
+
+    private final int[] progression = new int[this.progressionLength];
 
     private int correctAnswer;
 
@@ -13,14 +15,14 @@ public class Progression implements IGame {
     }
 
     public String getQuestion() {
-        int min = 1;
-        int max = 100;
-        int startProgressionFrom = Randomize.getRandom(min, max);
+        final int min = 1;
+        final int max = 100;
+        final int startProgressionFrom = Randomize.getRandom(min, max);
         this.generateProgression(startProgressionFrom);
 
-        int minIndex = 0;
-        int maxIndex = 9;
-        int missingIndex = Randomize.getRandom(minIndex, maxIndex);
+        final int minIndex = 0;
+        final int maxIndex = 9;
+        final int missingIndex = Randomize.getRandom(minIndex, maxIndex);
 
         StringBuilder question = new StringBuilder();
 
@@ -45,9 +47,9 @@ public class Progression implements IGame {
     }
 
     private void generateProgression(int startNumber) {
-        int minStep = 1;
-        int maxStep = 10;
-        int step = Randomize.getRandom(minStep, maxStep);
+        final int minStep = 1;
+        final int maxStep = 10;
+        final int step = Randomize.getRandom(minStep, maxStep);
 
         this.progression[0] = startNumber;
 

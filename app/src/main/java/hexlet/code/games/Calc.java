@@ -51,29 +51,28 @@ public class Calc implements IGame {
     }
 
     private void setSign() {
-        int min = 1;
-        int max = 3;
+        final int min = 1;
+        final int max = 3;
+
+        final int plusIndex = 1;
+        final int multiplyIndex = 2;
+        final int minusIndex = 3;
 
         int random = Randomize.getRandom(min, max);
-        if (random == 1) {
+        if (random == plusIndex) {
             this.sign = '+';
-            return;
-        }
-
-        if (random == 2) {
+        } else if (random == multiplyIndex) {
             this.sign = '*';
-            return;
-        }
-
-        if (random == 3) {
+        } else if (random == minusIndex) {
             this.sign = '-';
         }
     }
 
     private void setNumbers() {
-        int min = 1;
-        int max = 100;
+        final int min = 1;
+        final int max = 100;
+
         this.num1 = Randomize.getRandom(min, max);
-        this.num2 = Randomize.getRandom(min,max);
+        this.num2 = Randomize.getRandom(min, max);
     }
 }

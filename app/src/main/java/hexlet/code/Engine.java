@@ -6,13 +6,14 @@ import hexlet.code.games.IGame;
 class Engine {
     public static String gamerName;
 
+    public static final int WIN_COUNT = 3;
+
     public static void run(IGame game) {
         Engine.gamerName = Greet.getName();
         Engine.sayHello();
 
         game.explainRules();
 
-        int correctCountForWin = 3;
         int correctCount = 0;
         boolean isLose = false;
         do {
@@ -29,7 +30,7 @@ class Engine {
                 Engine.lose(userAnswer, correctAnswer);
                 isLose = true;
             }
-        } while (correctCount < correctCountForWin && !isLose);
+        } while (correctCount < Engine.WIN_COUNT && !isLose);
 
         if (isLose) {
             Exit.run();
@@ -61,7 +62,7 @@ class Engine {
     }
 
     public static void lose(String userAnswer, String correctAnswer) {
-        Cli.printMsg("'" + userAnswer + "'"  + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'.");
+        Cli.printMsg("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'.");
         Cli.printMsg("Let's try again, " + Engine.gamerName + "!");
         Cli.printMsg("");
     }

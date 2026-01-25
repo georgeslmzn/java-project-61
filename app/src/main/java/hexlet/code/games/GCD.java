@@ -12,8 +12,9 @@ public class GCD implements IGame {
     }
 
     public String getQuestion() {
-        int min = 0;
-        int max = 100;
+        final int min = 0;
+        final int max = 100;
+
         this.num1 = Randomize.getRandom(min, max);
         this.num2 = Randomize.getRandom(min, max);
 
