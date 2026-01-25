@@ -1,7 +1,6 @@
 package hexlet.code;
 
 import hexlet.code.cli.Cli;
-import hexlet.code.games.Greet;
 import hexlet.code.games.IGame;
 
 class Engine {
