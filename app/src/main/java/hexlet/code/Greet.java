@@ -3,14 +3,15 @@ package hexlet.code;
 import hexlet.code.cli.Cli;
 
 public class Greet {
+    private static String name;
+
     public static String getName() {
-        Cli.printMsg("Welcome to the Brain Games!");
-        Cli.printOnSameLine("May I have your name? ");
-        return Cli.getString();
+        return Greet.name;
     }
 
     public static void run() {
-        String name = Greet.getName();
+        Cli.printMsgOnTheSameLine("May I have your name? ");
+        Greet.name = Cli.getInput();
         Cli.printMsg("Hello, " + name + "!");
     }
 }

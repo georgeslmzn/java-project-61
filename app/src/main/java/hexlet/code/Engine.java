@@ -1,52 +1,54 @@
 package hexlet.code;
 
 import hexlet.code.cli.Cli;
-import hexlet.code.games.IGame;
+import hexlet.code.games.interfaces.IGame;
 
 class Engine {
-    private static String gamerName;
+    private static final int ANSWERS_COUNT_FOR_WIN = 3;
 
-    private static final int WIN_COUNT = 3;
-
-    public static void run(IGame game) {
-        Engine.gamerName = Greet.getName();
-        Engine.sayHello();
+    public static void play(IGame game) {
+        Engine.greet();
 
         game.explainRules();
 
         int correctCount = 0;
-        boolean isLose = false;
+        String correctAnswer;
+        String userAnswer;
         do {
             String question = game.getQuestion();
             Engine.askQuestion(question);
 
-            String correctAnswer = game.getCorrectAnswer(question);
-            String userAnswer = Engine.getUserAnswer();
+            correctAnswer = game.getCorrectAnswer(question);
+            userAnswer = Engine.getUserAnswer();
 
             if (userAnswer.equals(correctAnswer)) {
                 correctCount++;
                 Engine.sayCorrect();
             } else {
-                Engine.lose(userAnswer, correctAnswer);
-                isLose = true;
+                break;
             }
-        } while (correctCount < Engine.WIN_COUNT && !isLose);
+        } while (correctCount < Engine.ANSWERS_COUNT_FOR_WIN);
 
-        if (isLose) {
-            Exit.run();
-            return;
+        if (correctCount == Engine.ANSWERS_COUNT_FOR_WIN) {
+            Engine.win();
+        } else {
+            Engine.lose(userAnswer, correctAnswer);
         }
 
-        Engine.win();
+        Engine.exit();
+    }
+
+    public static void exit() {
+        Exit.run();
+    }
+
+    public static void greet() {
+        Greet.run();
     }
 
     public static String getUserAnswer() {
-        Cli.printOnSameLine("Your answer: ");
-        return Cli.getString();
-    }
-
-    public static void sayHello() {
-        Cli.printMsg("Hello, " + Engine.gamerName + "!");
+        Cli.printMsgOnTheSameLine("Your answer: ");
+        return Cli.getInput();
     }
 
     public static void askQuestion(String question) {
@@ -58,12 +60,12 @@ class Engine {
     }
 
     public static void win() {
-        Cli.printMsg("Congratulations, " + Engine.gamerName + "!");
+        Cli.printMsg("Congratulations, " + Greet.getName() + "!");
     }
 
     public static void lose(String userAnswer, String correctAnswer) {
         Cli.printMsg("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'.");
-        Cli.printMsg("Let's try again, " + Engine.gamerName + "!");
+        Cli.printMsg("Let's try again, " + Greet.getName() + "!");
         Cli.printMsg("");
     }
 }

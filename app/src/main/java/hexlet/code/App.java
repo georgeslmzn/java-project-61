@@ -1,94 +1,49 @@
 package hexlet.code;
 
 import hexlet.code.cli.Cli;
-import hexlet.code.games.Calc;
-import hexlet.code.games.EvenGame;
-import hexlet.code.games.GCD;
-import hexlet.code.games.Prime;
-import hexlet.code.games.Progression;
+import hexlet.code.games.GamesStorage;
+import hexlet.code.games.interfaces.IGame;
 
 public class App {
-    private static String[][] games;
+    private static final String EXIT_CODE = "0";
 
-    private static final int OPTIONS_COUNT = 7;
-
-    private static final int OPTIONS_DESCRIPTION_LENGTH = 2;
-
-    private static final int INDEX_OF_EXIT = 0;
-
-    private static final int INDEX_OF_GREET = 1;
-
-    private static final int INDEX_OF_EVEN = 2;
-
-    private static final int INDEX_OF_CALC = 3;
-
-    private static final int INDEX_OF_GCD = 4;
-
-    private static final int INDEX_OF_PROGRESSION = 5;
-
-    private static final int INDEX_OF_PRIME = 6;
-
-    public static void setGames() {
-        App.games = new String[App.OPTIONS_COUNT][App.OPTIONS_DESCRIPTION_LENGTH];
-
-        for (int i = 0; i < App.games.length; i++) {
-            App.games[i][0] = String.valueOf(i);
-
-            if (i == App.INDEX_OF_EXIT) {
-                App.games[i][1] = "Exit";
-            } else if (i == App.INDEX_OF_GREET) {
-                App.games[i][1] = "Greet";
-            } else if (i == App.INDEX_OF_EVEN) {
-                App.games[i][1] = "Even";
-            } else if (i == App.INDEX_OF_CALC) {
-                App.games[i][1] = "Calc";
-            } else if (i == App.INDEX_OF_GCD) {
-                App.games[i][1] = "GCD";
-            } else if (i == App.INDEX_OF_PROGRESSION) {
-                App.games[i][1] = "Progression";
-            } else if (i == App.INDEX_OF_PRIME) {
-                App.games[i][1] = "Prime";
-            }
-        }
-    }
-
-    public static int choseGame() {
-        Cli.printMsg("Please enter the game number and press Enter.");
-
-        for (String[] game : App.games) {
-            Cli.printMsg(game[0] + " - " + game[1]);
-        }
-
-        int chosenGameNumber = App.getGameNumber();
-        Cli.printMsg("");
-
-        return chosenGameNumber;
-    }
-
-    private static int getGameNumber() {
-        Cli.printOnSameLine("Your choice: ");
-        return Cli.getInt();
-    }
+    private static final String GREET_CODE = "1";
 
     public static void main(String[] args) {
-        App.setGames();
+        String actionCode = App.getActionCode();
+        Cli.printMsg("");
 
-        int chosenGameNumber = App.choseGame();
-
-        if (chosenGameNumber == App.INDEX_OF_EXIT) {
-            Exit.run();
-        } else if (chosenGameNumber == App.INDEX_OF_GREET) {
-            Greet.run();
-        } else if (chosenGameNumber == App.INDEX_OF_EVEN) {
-            Engine.run(new EvenGame());
-        } else if (chosenGameNumber == App.INDEX_OF_CALC) {
-            Engine.run(new Calc());
-        } else if (chosenGameNumber == App.INDEX_OF_GCD) {
-            Engine.run(new GCD());
-        } else if (chosenGameNumber == App.INDEX_OF_PROGRESSION) {
-            Engine.run(new Progression());
-        } else if (chosenGameNumber == App.INDEX_OF_PRIME) {
-            Engine.run(new Prime());
+        if (actionCode.equals(App.EXIT_CODE)) {
+            Engine.exit();
         }
+
+        if (actionCode.equals(App.GREET_CODE)) {
+            Engine.greet();
+        }
+
+        IGame game = GamesStorage.getGame(actionCode);
+        if (game != null) {
+            Engine.play(game);
+        }
+
+        Engine.exit();
+    }
+
+    public static void printActions() {
+        Cli.printMsg("Please enter the game number and press Enter.");
+
+        Cli.printMsg("1 - Greet");
+        for (String[] game : GamesStorage.getGamesMap()) {
+            Cli.printMsg(game[0] + " - " + game[1]);
+        }
+        Cli.printMsg("0 - Exit");
+
+        Cli.printMsgOnTheSameLine("Your choice: ");
+    }
+
+    private static String getActionCode() {
+        App.printActions();
+
+        return Cli.getInput();
     }
 }

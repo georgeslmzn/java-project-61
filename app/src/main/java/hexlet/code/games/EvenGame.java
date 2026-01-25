@@ -2,6 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Randomize;
 import hexlet.code.cli.Cli;
+import hexlet.code.games.interfaces.IGame;
 
 public final class EvenGame implements IGame {
     @Override

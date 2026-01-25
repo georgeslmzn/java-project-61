@@ -1,4 +1,4 @@
-package hexlet.code.games;
+package hexlet.code.games.interfaces;
 
 public interface IGame {
     void explainRules();

@@ -9,10 +9,11 @@ public class Cli {
         if (Cli.scanner == null) {
             Cli.scanner = new Scanner(System.in);
         }
-        return Cli.scanner;
+
+        return new Scanner(System.in);
     }
 
-    public static void printOnSameLine(String msg) {
+    public static void printMsgOnTheSameLine(String msg) {
         System.out.print(msg);
     }
 
@@ -20,11 +21,7 @@ public class Cli {
         System.out.println(msg);
     }
 
-    public static int getInt() {
-        return Cli.getScanner().nextInt();
-    }
-
-    public static String getString() {
+    public static String getInput() {
         return Cli.getScanner().next();
     }
 
