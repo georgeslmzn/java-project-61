@@ -3,8 +3,6 @@ package hexlet.code.games;
 import hexlet.code.Randomize;
 import hexlet.code.cli.Cli;
 
-import java.lang.Math;
-
 public class EvenGame implements IGame {
     @Override
     public void explainRules() {

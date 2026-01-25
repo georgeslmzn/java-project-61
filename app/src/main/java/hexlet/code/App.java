@@ -5,12 +5,13 @@ import hexlet.code.games.Calc;
 import hexlet.code.games.EvenGame;
 import hexlet.code.games.Exit;
 import hexlet.code.games.Greet;
+import hexlet.code.games.GCD;
 
 public class App {
     public static String[][] games;
 
     public static void setGames() {
-        App.games = new String[4][2];
+        App.games = new String[5][2];
 
         App.games[0][0] = "0";
         App.games[0][1] = "Exit";
@@ -23,6 +24,9 @@ public class App {
 
         App.games[3][0] = "3";
         App.games[3][1] = "Calc";
+
+        App.games[4][0] = "4";
+        App.games[4][1] = "GCD";
     }
 
     public static int choseGame() {
@@ -64,6 +68,11 @@ public class App {
 
             if (chosenGameNumber == 3) {
                 Engine.run(gamerName, new Calc());
+                continue;
+            }
+
+            if (chosenGameNumber == 4) {
+                Engine.run(gamerName, new GCD());
             }
         } while (chosenGameNumber != 0);
     }
