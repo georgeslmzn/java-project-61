@@ -12,6 +12,10 @@ public class Cli {
         return Cli.scanner;
     }
 
+    public static void printOnSameLine(String msg) {
+        System.out.print(msg);
+    }
+
     public static void printMsg(String msg) {
         System.out.println(msg);
     }

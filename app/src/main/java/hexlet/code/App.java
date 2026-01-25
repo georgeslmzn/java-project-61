@@ -41,6 +41,7 @@ public class App {
         int chosenGameNumber = Cli.getInt();
 
         Cli.printMsg("Your choice: " + chosenGameNumber);
+        Cli.printMsg("");
 
         return chosenGameNumber;
     }

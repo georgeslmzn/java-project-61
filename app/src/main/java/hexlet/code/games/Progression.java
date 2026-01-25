@@ -3,8 +3,6 @@ package hexlet.code.games;
 import hexlet.code.Randomize;
 import hexlet.code.cli.Cli;
 
-import java.util.Arrays;
-
 public class Progression implements IGame {
     private final int[] progression = new int[10];
 

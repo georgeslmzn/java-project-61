@@ -20,7 +20,6 @@ class Engine {
 
             String correctAnswer = game.getCorrectAnswer(question);
             String userAnswer = Engine.getUserAnswer();
-            Engine.printUserAnswer(userAnswer);
 
             if (userAnswer.equals(correctAnswer)) {
                 correctCount++;
@@ -34,16 +33,13 @@ class Engine {
         Engine.win();
     }
 
-    public static void printUserAnswer(String userAnswer) {
-        Cli.printMsg("Your answer: " + userAnswer);
+    public static String getUserAnswer() {
+        Cli.printOnSameLine("Your answer: ");
+        return Cli.getString();
     }
 
     public static void sayHello() {
         Cli.printMsg("Hello," + Engine.gamerName + "!");
-    }
-
-    public static String getUserAnswer() {
-        return Cli.getString();
     }
 
     public static void askQuestion(String question) {

@@ -5,7 +5,7 @@ import hexlet.code.cli.Cli;
 public class Greet {
     public static String getName() {
         Cli.printMsg("Welcome to the Brain Games!");
-        Cli.printMsg("May I have your name?");
+        Cli.printOnSameLine("May I have your name? ");
         return Cli.getString();
     }
 
