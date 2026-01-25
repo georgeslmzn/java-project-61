@@ -48,43 +48,40 @@ public class App {
     public static void main(String[] args) {
         App.setGames();
 
-        int chosenGameNumber = 0;
-        do {
-            chosenGameNumber = App.choseGame();
+        int chosenGameNumber = App.choseGame();
 
-            if (chosenGameNumber == 0) {
-                Exit.run();
-                continue;
-            }
+        if (chosenGameNumber == 0) {
+            Exit.run();
+            return;
+        }
 
-            if (chosenGameNumber == 1) {
-                Greet.run();
-                continue;
-            }
+        if (chosenGameNumber == 1) {
+            Greet.run();
+            return;
+        }
 
-            if (chosenGameNumber == 2) {
-                Engine.run(new EvenGame());
-                continue;
-            }
+        if (chosenGameNumber == 2) {
+            Engine.run(new EvenGame());
+            return;
+        }
 
-            if (chosenGameNumber == 3) {
-                Engine.run(new Calc());
-                continue;
-            }
+        if (chosenGameNumber == 3) {
+            Engine.run(new Calc());
+            return;
+        }
 
-            if (chosenGameNumber == 4) {
-                Engine.run(new GCD());
-                continue;
-            }
+        if (chosenGameNumber == 4) {
+            Engine.run(new GCD());
+            return;
+        }
 
-            if (chosenGameNumber == 5) {
-                Engine.run(new Progression());
-                continue;
-            }
+        if (chosenGameNumber == 5) {
+            Engine.run(new Progression());
+            return;
+        }
 
-            if (chosenGameNumber == 6) {
-                Engine.run(new Prime());
-            }
-        } while (chosenGameNumber != 0);
+        if (chosenGameNumber == 6) {
+            Engine.run(new Prime());
+        }
     }
 }
